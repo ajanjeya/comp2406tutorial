@@ -1,0 +1,90 @@
+#include <iostream>
+#include <iomanip>
+using namespace std;
+#include "Calendar.h"
+#include "Event.h"
+#include "View.h"
+
+View::View(){
+  Calendar cal;
+}
+
+bool View::displayMenu(){
+  int numOptions = 1;
+  int selection = -1;
+
+  cout<< "1: add event"<<endl;
+  cout<< "0: Exit" << endl;
+  while(selection <0 || selection >numOptions){
+    cout<< "Enter your selection:";
+    cin >>selection;
+    if(selection ==1){
+      return true;
+    }
+    else if (selection == 0){
+      return false;
+    }
+  }
+  return false;
+}
+
+void View:: readEvent(string& name, int& year, int& month, int& day, int& hour, int& minute , int& seconds, int& priority){
+  string n;
+  int y,m,d,h,min, s, p;
+  //day, month, year,hour,minute,second;
+  
+  cout<< "Day:  ";
+  cin>> d;
+  day = d;
+  cout<< "Month:  ";
+  cin>> m;
+  month =m;
+  cout<<"Year:  ";
+  cin>> y;
+  year= y;
+  cout<<"Hour:   ";
+  cin>> h;
+  hour  = h;
+  cout<<"Minute:  ";
+  cin >> min;
+  minute = min;
+  cout<<"Seconds:  ";
+  cin>> s;
+  seconds = s;
+  cout<<"Name:  ";
+  cin>> n;
+  name = n;
+  cout<<"Priority:  ";
+  cin>>p;
+  priority = p;
+}
+
+void View::print(Calendar c)
+{
+  cal = c;
+  cal.print();
+}
+
+int View:: readEventType(){
+  int t;
+  cout<<"What Event Type(1 for Work Event, 0 for School Event): ";
+  cin>>t;
+  return t;
+}
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

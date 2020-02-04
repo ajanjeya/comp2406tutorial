@@ -1,0 +1,34 @@
+#ifndef CALENDAR_H
+#define CALENDAR_H
+#define MAX_ARR_SIZE 30
+
+#include "Event.h"
+
+class Calendar
+
+{
+ public:
+  Calendar();
+  ~Calendar();
+  void addEvent(Event*);
+  void print();
+  int getNumEvents();
+  void setNumEvents(int);
+  
+
+
+
+  
+
+
+ private:
+  string name;
+  Event eventList[MAX_ARR_SIZE];
+  int numEvents;
+
+
+
+
+
+};
+#endif

@@ -1,0 +1,45 @@
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+#include "View.h"
+#include "Calendar.h"
+#include "Event.h"
+#include "SchoolEvent.h"
+#include "WorkEvent.h"
+#include "Control.h"
+
+Control::Control(){};
+
+void Control::launch(){
+  Calendar schoolEvents, workEvents;
+  View view;
+  string name;
+  int y, m ,d ,h, min, s, selection, p;
+  SchoolEvent* se;
+  WorkEvent* we;
+  while(view.displayMenu()){
+    selection = view.readEventType();
+    view.readEvent(name,y,m,d,h,min, s,p);
+    if(selection == 1){ 
+      we = new WorkEvent(name,p);
+      we->setDate(y,m,d,h,min,s);
+      workEvents.addEvent(we);
+    }
+    else if(selection == 0){
+      se = new  SchoolEvent(name, p);
+      se->setDate(y,m,d,h,min,s);
+      schoolEvents.addEvent(se);
+    }
+  }
+  view.print(schoolEvents);
+  cout<<endl;
+  view.print(workEvents);
+    
+  
+
+
+
+
+
+}
